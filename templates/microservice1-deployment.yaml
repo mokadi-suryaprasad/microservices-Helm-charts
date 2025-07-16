@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.microservice1.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.microservice1.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.microservice1.name }}
+    spec:
+      containers:
+        - name: {{ .Values.microservice1.name }}
+          image: {{ .Values.microservice1.image }}
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /microservice1
+              port: 80
+              scheme: HTTP
