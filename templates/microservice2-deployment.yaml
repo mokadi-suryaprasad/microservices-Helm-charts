@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: microservice2
+  name: {{ .Values.microservice2.name }}
   namespace: {{ .Values.namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: microservice2
+      app: {{ .Values.microservice2.name }}
   template:
     metadata:
       labels:
-        app: microservice2
+        app: {{ .Values.microservice2.name }}
     spec:
       containers:
-        - name: microservice2
-          image: "{{ .Values.microservice2.image.repository }}@{{ .Values.microservice2.image.tag }}"
+        - name: {{ .Values.microservice2.name }}
+          image: "{{ .Values.microservice2.image.repository }}:{{ .Values.microservice2.image.tag }}"
           imagePullPolicy: {{ .Values.microservice2.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.microservice2.containerPort }}
