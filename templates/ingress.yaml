@@ -10,8 +10,7 @@ metadata:
 spec:
   ingressClassName: {{ .Values.ingress.className | default "nginx" }}
   rules:
-    - host: {{ .Values.ingress.host | default "localhost" }}
-      http:
+    - http:
         paths:
           - path: /microservice1
             pathType: Prefix
