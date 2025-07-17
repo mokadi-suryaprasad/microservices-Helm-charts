@@ -3,12 +3,11 @@ namespace: development
 ingress:
   enabled: true
   className: nginx
-  host: microservices.example.com  # Or your external IP (for GCP without domain)
 
 microservice1:
-  name: service-one
-  port: 80
-
+  name: microservice1
+  image: us-central1-docker.pkg.dev/heroic-gamma-465105-c8/microservicequiz/microservice1@sha256:...
+  
 microservice2:
-  name: service-two
-  port: 80
+  name: microservice2
+  image: us-central1-docker.pkg.dev/heroic-gamma-465105-c8/microservicequiz/microservice2@sha256:...
