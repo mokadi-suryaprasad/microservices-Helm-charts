@@ -2,27 +2,27 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}-ingress
+  name: microservices-ingress
   namespace: {{ .Values.namespace }}
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: {{ .Values.ingress.className }}
   rules:
     - http:
         paths:
-          - path: /microservice1
+          - path: /microservice1(/|$)(.*)
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.microservice1.name }}
+                name: microservice1
                 port:
                   number: 80
-          - path: /microservice2
+          - path: /microservice2(/|$)(.*)
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.microservice2.name }}
+                name: microservice2
                 port:
                   number: 80
 {{- end }}
