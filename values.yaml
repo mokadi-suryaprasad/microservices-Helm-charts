@@ -17,4 +17,3 @@ microservice2:
 ingress:
   enabled: true
   className: nginx
-  host: ""  # Optional, for DNS routing
