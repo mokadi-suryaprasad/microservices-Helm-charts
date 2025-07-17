@@ -4,7 +4,7 @@ microservice1:
   name: microservice1
   image:
     repository: us-central1-docker.pkg.dev/heroic-gamma-465105-c8/microservicequiz/microservice1
-    tag: sha256:102a9688dace4e72f982cb2ac645068587583a63d9bfe00d8eb7f7a8aa0452af
+    tag: 5
     pullPolicy: IfNotPresent
   containerPort: 80
 
@@ -12,7 +12,7 @@ microservice2:
   name: microservice2
   image:
     repository: us-central1-docker.pkg.dev/heroic-gamma-465105-c8/microservicequiz/microservice2
-    tag: sha256:58c3a1e2fef27d410f6aca449dda510a606e3b1fadb18c7b3725c30c70a984b8
+    tag: 5
     pullPolicy: IfNotPresent
   containerPort: 80
 
