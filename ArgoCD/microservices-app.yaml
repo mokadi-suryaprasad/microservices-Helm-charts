@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/mokadi-suryaprasad/microservices-Helm-charts.git
     targetRevision: HEAD
-    path: .              # ⚠️ Helm chart is at root (not in ArgoCD/)
+    path: .                   # Chart is at root of the repo
     helm:
       valueFiles:
         - values.yaml
