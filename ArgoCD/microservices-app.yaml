@@ -1,23 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: microservices
+  name: microservices-app
   namespace: argocd
 spec:
+  destination:
+    namespace: development
+    server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://github.com/mokadi-suryaprasad/microservices-Helm-charts.git
+    repoURL: https://github.com/<your-username>/<repo>.git
     targetRevision: HEAD
-    path: .                   # Chart is at root of the repo
+    path: .
     helm:
-      valueFiles:
-        - values.yaml
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: development
+      releaseName: microservices
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
