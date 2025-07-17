@@ -1,20 +1,23 @@
+{{- range $svc := list .Values.microservice1 .Values.microservice2 }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.microservice1.name }}
-  namespace: {{ .Values.namespace }}
+  name: {{ $svc.name }}
+  namespace: {{ $.Values.namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.microservice1.name }}
+      app: {{ $svc.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.microservice1.name }}
+        app: {{ $svc.name }}
     spec:
       containers:
-        - name: {{ .Values.microservice1.name }}
-          image: {{ .Values.microservice1.image }}
+        - name: {{ $svc.name }}
+          image: {{ $svc.image }}
           ports:
-            - containerPort: 8080
+            - containerPort: {{ $svc.containerPort }}
+---
+{{- end }}
