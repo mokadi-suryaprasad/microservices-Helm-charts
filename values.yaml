@@ -2,18 +2,23 @@ namespace: development
 
 microservice1:
   name: microservice1
-  image: us-central1-docker.pkg.dev/heroic-gamma-465105-c8/microservicequiz/microservice1@sha256:102a9688dace4e72f982cb2ac645068587583a63d9bfe00d8eb7f7a8aa0452af
-  pullPolicy: IfNotPresent
+  image:
+    repository: us-central1-docker.pkg.dev/heroic-gamma-465105-c8/microservicequiz/microservice1
+    tag: sha256:102a9688dace4e72f982cb2ac645068587583a63d9bfe00d8eb7f7a8aa0452af
+    pullPolicy: IfNotPresent
   containerPort: 80
 
 microservice2:
   name: microservice2
-  image: us-central1-docker.pkg.dev/heroic-gamma-465105-c8/microservicequiz/microservice2@sha256:58c3a1e2fef27d410f6aca449dda510a606e3b1fadb18c7b3725c30c70a984b8
-  pullPolicy: IfNotPresent
+  image:
+    repository: us-central1-docker.pkg.dev/heroic-gamma-465105-c8/microservicequiz/microservice2
+    tag: sha256:58c3a1e2fef27d410f6aca449dda510a606e3b1fadb18c7b3725c30c70a984b8
+    pullPolicy: IfNotPresent
   containerPort: 80
 
 ingress:
   enabled: true
   className: nginx
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  host: ""  # optional for DNS, empty for IP access
