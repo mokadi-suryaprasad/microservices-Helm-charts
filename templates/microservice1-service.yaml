@@ -10,3 +10,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: {{ .Values.microservice1.containerPort }}
+  type: ClusterIP
