@@ -1,13 +1,12 @@
-{{- if .Values.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: microservices-ingress
-  namespace: {{ .Values.namespace }}
+  namespace: development
   annotations:
-{{ toYaml .Values.ingress.annotations | indent 4 }}
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: {{ .Values.ingress.className }}
+  ingressClassName: nginx
   rules:
     - http:
         paths:
@@ -15,14 +14,13 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.microservice1.name }}
+                name: microservice1
                 port:
                   number: 80
           - path: /microservice2
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.microservice2.name }}
+                name: microservice2
                 port:
                   number: 80
-{{- end }}
