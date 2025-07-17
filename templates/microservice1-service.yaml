@@ -4,10 +4,8 @@ metadata:
   name: {{ .Values.microservice1.name }}
   namespace: {{ .Values.namespace }}
 spec:
+  ports:
+    - port: 80
+      targetPort: {{ .Values.microservice1.containerPort }}
   selector:
     app: {{ .Values.microservice1.name }}
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: {{ .Values.microservice1.containerPort }}
-  type: ClusterIP
