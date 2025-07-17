@@ -17,10 +17,4 @@ spec:
         - name: {{ .Values.microservice1.name }}
           image: {{ .Values.microservice1.image }}
           ports:
-            - containerPort: 80
-          readinessProbe:
-            failureThreshold: 3
-            httpGet:
-              path: /microservice1
-              port: 80
-              scheme: HTTP
+            - containerPort: 8080
