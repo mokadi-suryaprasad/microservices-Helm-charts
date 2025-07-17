@@ -5,22 +5,20 @@ metadata:
   name: microservices-ingress
   namespace: {{ .Values.namespace }}
   annotations:
-{{- range $key, $value := .Values.ingress.annotations }}
-    {{ $key }}: {{ $value | quote }}
-{{- end }}
+{{ toYaml .Values.ingress.annotations | indent 4 }}
 spec:
   ingressClassName: {{ .Values.ingress.className }}
   rules:
     - http:
         paths:
-          - path: /microservice1
+          - path: /microservice1(/|$)(.*)
             pathType: Prefix
             backend:
               service:
                 name: {{ .Values.microservice1.name }}
                 port:
                   number: 80
-          - path: /microservice2
+          - path: /microservice2(/|$)(.*)
             pathType: Prefix
             backend:
               service:
