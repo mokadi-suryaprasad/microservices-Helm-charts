@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.microservice2.name }}
-          image: "{{ .Values.microservice2.image.repository }}:{{ .Values.microservice2.image.tag }}"
-          imagePullPolicy: {{ .Values.microservice2.image.pullPolicy }}
+          image: "{{ .Values.microservice2.image }}"
+          imagePullPolicy: {{ .Values.microservice2.pullPolicy }}
           ports:
             - containerPort: {{ .Values.microservice2.containerPort }}
