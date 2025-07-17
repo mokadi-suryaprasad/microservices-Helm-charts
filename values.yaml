@@ -2,7 +2,7 @@ namespace: development
 
 ingress:
   enabled: true
-  className: gce  # Use "gce" or "nginx" based on your GKE setup
+  className: nginx   # ✅ use nginx here for NGINX controller
 
 microservice1:
   name: microservice1
