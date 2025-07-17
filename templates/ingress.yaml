@@ -1,29 +1,26 @@
-{{- if .Values.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: microservices-ingress
-  namespace: {{ .Values.namespace | default "default" }}
+  namespace: development
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
-  ingressClassName: {{ .Values.ingress.className | default "nginx" }}
+  ingressClassName: nginx
   rules:
-    - http:
-        paths:
-          - path: /microservice1
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ .Values.microservice1.name }}
-                port:
-                  number: {{ .Values.microservice1.port | default 80 }}
-          - path: /microservice2
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ .Values.microservice2.name }}
-                port:
-                  number: {{ .Values.microservice2.port | default 80 }}
-{{- end }}
+  - http:
+      paths:
+        - path: /microservice1
+          pathType: Prefix
+          backend:
+            service:
+              name: microservice1
+              port:
+                number: 80
+        - path: /microservice2
+          pathType: Prefix
+          backend:
+            service:
+              name: microservice2
+              port:
+                number: 80
