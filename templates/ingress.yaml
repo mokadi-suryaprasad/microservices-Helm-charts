@@ -11,15 +11,15 @@ spec:
   rules:
     - http:
         paths:
-          - path: /microservice1
-            pathType: Prefix
+          - path: /microservice1(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: {{ .Values.microservice1.name }}
                 port:
                   number: 80
-          - path: /microservice2
-            pathType: Prefix
+          - path: /microservice2(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: {{ .Values.microservice2.name }}
