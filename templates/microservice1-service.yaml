@@ -1,14 +1,11 @@
-{{- range $svc := list .Values.microservice1 .Values.microservice2 }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ $svc.name }}
-  namespace: {{ $.Values.namespace }}
+  name: microservice1
+  namespace: {{ .Values.namespace }}
 spec:
   selector:
-    app: {{ $svc.name }}
+    app: microservice1
   ports:
     - port: 80
-      targetPort: {{ $svc.containerPort }}
----
-{{- end }}
+      targetPort: {{ .Values.microservice1.containerPort }}
